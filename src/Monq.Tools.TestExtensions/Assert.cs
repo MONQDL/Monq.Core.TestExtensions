@@ -23,7 +23,7 @@ namespace Xunit
             var filteredProperties = filterType.GetFilteredProperties().ToList();
 
             var reqModelProps = filteredProperties.Select(x => x.GetCustomAttributes<FilteredByAttribute>()).SelectMany(x => x).Select(x => x.FilteredProperty).ToList();
-            var badProps = reqModelProps.Except(modelType.GetProperties().Select(x => x.Name)).ToList();
+            var badProps = reqModelProps.Where(x => modelType.GetPropertyType(x) == null).ToList();
             if (badProps.Count > 0)
                 ag.Add(new XunitException($"В конечной модели отсутствуют поля {string.Join(",", badProps)}"));
 
@@ -35,7 +35,7 @@ namespace Xunit
                 var filterPropType = property.PropertyType;
                 if (filterPropType.IsGenericType)
                     filterPropType = filterPropType.GetGenericArguments().FirstOrDefault();
-                var modelPropType = modelType.GetProperty(modelPropertyName).PropertyType;
+                var modelPropType = modelType.GetPropertyType(modelPropertyName);
 
                 if (!filterPropType.Equals(modelPropType))
                     ag.Add(new EqualException($"Свойство {modelPropertyName} должно быть типа {filterPropType.Name}", modelPropType.Name));
@@ -59,10 +59,10 @@ namespace Xunit
             Func<TExpected, TKey> expectedKeySelector, Func<TActual, TKey> actualKeySelector, Action<TExpected, TActual> action)
         {
             expectedCollection.GroupJoin(actualCollection, expectedKeySelector, actualKeySelector,
-                  (Expected, Actual) => new { Expected, Actual })
+                  (Expected, Actual) => (Expected, Actual))
                     .SelectMany(x => x.Actual.DefaultIfEmpty(),
-                    (item, Actual) => new { item.Expected, Actual })
-                    .ToList().ForEach((x) =>
+                    (item, Actual) => (item.Expected, Actual))
+                    .ToList().ForEach(x =>
                     {
                         try
                         {

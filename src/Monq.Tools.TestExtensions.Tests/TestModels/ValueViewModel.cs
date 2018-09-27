@@ -22,5 +22,7 @@ namespace Monq.Tools.TestExtensions.Tests.TestModels
 
         public int ZabbixId { get; set; }
         public long ElementId { get; set; }
+
+        public ValueViewModel Child { get; set; }
     }
 }
