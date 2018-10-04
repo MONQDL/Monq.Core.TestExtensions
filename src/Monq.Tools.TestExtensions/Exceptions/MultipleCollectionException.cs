@@ -60,9 +60,8 @@ namespace Xunit
             get
             {
                 return string.Format(CultureInfo.CurrentCulture,
-                                     "{0}{4}Collection: {1}{4}Error during comparison of item with key {2}{4}Expected: {5}{4}Actual: {6}{4}Inner exception: {3}",
+                                     "{3}{0}{3}Error during comparison of item with key {1}{3}Expected: {4}{3}Actual: {5}{3}Inner exception: {2}",
                                      base.Message,
-                                     ArgumentFormatter.Format(Collection),
                                      Position,
                                      innerException,
                                      Environment.NewLine,
