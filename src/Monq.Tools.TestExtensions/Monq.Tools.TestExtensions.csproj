@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
     <Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -11,15 +11,17 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Authors>aligin, dmtry, dealwithbotalfred, darkscorp8</Authors>
+    <Authors>aligin, dmtry, dealwithbotalfred, darkscorp8, NorthRebel</Authors>
     <PackageTags>mvc asp.net-core</PackageTags>
     <IsPackable>true</IsPackable>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Monq.Tools.MvcExtensions" Version="1.6.0" />
-    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Monq.Core.Authorization" Version="3.2.0" />
+    <PackageReference Include="Monq.Tools.MvcExtensions" Version="1.7.0" />
+    <PackageReference Include="Moq" Version="4.12.0" />
     <PackageReference Include="xunit.assert.source" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

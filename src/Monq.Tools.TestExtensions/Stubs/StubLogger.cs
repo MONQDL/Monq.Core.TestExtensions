@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
-namespace Monq.Tools.TestExtensions.Stubs
+namespace Xunit.Stubs
 {
 #pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
 #pragma warning disable RCS1163 // Unused parameter.
