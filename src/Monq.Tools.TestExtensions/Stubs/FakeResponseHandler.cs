@@ -15,11 +15,6 @@ namespace Xunit.Stubs
         readonly Dictionary<Uri, Func<HttpResponseMessage>> _fakeResponses = new Dictionary<Uri, Func<HttpResponseMessage>>();
 
         /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="FakeResponseHandler"/>.
-        /// </summary>
-        public FakeResponseHandler() {}
-
-        /// <summary>
         /// Добавить ответ <paramref name="responseMessage"/>,
         /// который содержит в себе сообщение <paramref name="content"/> в сериализованном виде,
         /// для заданного маршрута <paramref name="uri"/>.
@@ -43,6 +38,7 @@ namespace Xunit.Stubs
         public void AddFakeResponse(Uri uri, HttpStatusCode statusCode, string content) => 
             _fakeResponses.Add(uri, () => new HttpResponseMessage() { StatusCode = statusCode, Content = new StringContent(content) });
 
+        /// <inheritdoc />
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (_fakeResponses.ContainsKey(request.RequestUri))

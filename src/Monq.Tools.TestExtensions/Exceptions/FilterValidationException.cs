@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using Xunit.Sdk;
 
 namespace Monq.Tools.TestExtensions.Exceptions
 {
+    /// <summary></summary>
+    /// <seealso cref="Xunit.Sdk.XunitException" />
     public class FilterValidationException : XunitException
     {
         readonly IEnumerable<string> _badProperties;

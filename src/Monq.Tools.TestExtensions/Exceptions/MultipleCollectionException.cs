@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using Xunit.Sdk;
 
 namespace Xunit
@@ -18,8 +16,8 @@ namespace Xunit
 #endif
     class MultipleCollectionException : XunitException
     {
-        readonly string innerException;
-        readonly string innerStackTrace;
+        readonly string _innerException;
+        readonly string _innerStackTrace;
 
         /// <summary>
         /// Creates a new instance of the <see cref="MultipleCollectionException" /> class.
@@ -34,8 +32,8 @@ namespace Xunit
         {
             Collection = collection;
             Position = position;
-            this.innerException = FormatInnerException(innerException);
-            innerStackTrace = innerException == null ? null : innerException.StackTrace;
+            _innerException = FormatInnerException(innerException);
+            _innerStackTrace = innerException?.StackTrace;
             Expected = expected;
             Actual = actual;
         }
@@ -45,7 +43,14 @@ namespace Xunit
         /// </summary>
         public object Collection { get; set; }
 
+        /// <summary>
+        /// Gets or sets the expected.
+        /// </summary>
         public object Expected { get; set; }
+
+        /// <summary>
+        /// Gets or sets the actual.
+        /// </summary>
         public object Actual { get; set; }
 
         /// <summary>
@@ -55,30 +60,25 @@ namespace Xunit
         public string Position { get; set; }
 
         /// <inheritdoc/>
-        public override string Message
-        {
-            get
-            {
-                return string.Format(CultureInfo.CurrentCulture,
-                                     "{3}{0}{3}Error during comparison of item with key {1}{3}Expected: {4}{3}Actual: {5}{3}Inner exception: {2}",
-                                     base.Message,
-                                     Position,
-                                     innerException,
-                                     Environment.NewLine,
-                                     ArgumentFormatter.Format(Expected),
-                                     ArgumentFormatter.Format(Actual));
-            }
-        }
+        public override string Message =>
+            string.Format(CultureInfo.CurrentCulture,
+                "{3}{0}{3}Error during comparison of item with key {1}{3}Expected: {4}{3}Actual: {5}{3}Inner exception: {2}",
+                base.Message,
+                Position,
+                _innerException,
+                Environment.NewLine,
+                ArgumentFormatter.Format(Expected),
+                ArgumentFormatter.Format(Actual));
 
         /// <inheritdoc/>
         public override string StackTrace
         {
             get
             {
-                if (innerStackTrace == null)
+                if (_innerStackTrace == null)
                     return base.StackTrace;
 
-                return innerStackTrace + Environment.NewLine + base.StackTrace;
+                return _innerStackTrace + Environment.NewLine + base.StackTrace;
             }
         }
 

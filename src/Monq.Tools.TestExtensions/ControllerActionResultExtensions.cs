@@ -27,7 +27,7 @@ namespace Xunit
         }
 
         /// <summary>
-        /// Верификация действия контроллера, которое возвращает объект типа <see cref="T"/>.
+        /// Верификация действия контроллера, которое возвращает объект типа <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">Тип возвращаемого объекта.</typeparam>
         /// <param name="objectResult">Результат действия контроллера.</param>
@@ -43,7 +43,7 @@ namespace Xunit
         }
 
         /// <summary>
-        /// Верификация действия контроллера, которое возвращает <see cref="CreatedAtActionResult"/> с вложенным объектом <see cref="T"/>.
+        /// Верификация действия контроллера, которое возвращает <see cref="CreatedAtActionResult"/> с вложенным объектом <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">Тип вложенного объекта.</typeparam>
         /// <param name="objectResult">Результат действия контроллера.</param>
