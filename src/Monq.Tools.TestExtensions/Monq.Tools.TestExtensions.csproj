@@ -19,7 +19,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Monq.Core.Authorization" Version="3.2.0" />
+    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="1.8.2" />
+    <PackageReference Include="Monq.Core.Paging.Models" Version="4.0.0" />
     <PackageReference Include="Monq.Tools.MvcExtensions" Version="1.7.0" />
     <PackageReference Include="Moq" Version="4.13.0" />
     <PackageReference Include="xunit.assert.source" Version="2.4.1">

@@ -14,7 +14,7 @@ namespace Xunit
         /// <param name="sporadic">ГПСЧ.</param>
         /// <param name="minValue">Минимальное возможное значение.</param>
         /// <returns></returns>
-        public static long GetId(this Random sporadic, long minValue = 1) =>
+        public static long GetId(this Random sporadic, in long minValue = 1) =>
             sporadic.Next(minValue, long.MaxValue);
 
         /// <summary>

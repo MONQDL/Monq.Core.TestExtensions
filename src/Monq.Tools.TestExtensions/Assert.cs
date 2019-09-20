@@ -5,12 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Xunit.Sdk;
 
 namespace Xunit
 {
     public partial class Assert
     {
+        /// <summary>
+        /// Проверить вхождение <paramref name="actual"/> даты в диапазон, между <paramref name="start"/> и <paramref name="end"/>.
+        /// </summary>
+        /// <param name="start">Начальная граница диапазона.</param>
+        /// <param name="end">Конечная граница диапазона.</param>
+        /// <param name="actual">Текущее значение.</param>
+        public static void BetweenDates(DateTimeOffset start, DateTimeOffset end, DateTimeOffset actual) =>
+            True(actual >= start && actual <= end);
+
         /// <summary>
         /// Проверить класс фильтра на валидность.
         /// </summary>

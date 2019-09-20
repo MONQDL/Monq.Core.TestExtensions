@@ -5,45 +5,107 @@ using System.Collections.Generic;
 namespace Xunit
 {
     /// <summary>
-    /// Методы расширения для обобщенных (<see cref="IEnumerable{T}"/>) и необобщенных (<see cref="Array"/>) коллекций и словарей.
+    /// Методы расширения для обобщенных (<see cref="IEnumerable{T}"/>)
+    /// и необобщенных (<see cref="Array"/>) коллекций и словарей.
     /// </summary>
     public static class CollectionExtensions
     {
         /// <summary>
-        /// Сгенерировать случайный идентификатор для сущности, который не входит в коллекцию.
+        /// Получить коллекцию всех значений перечисления.
+        /// </summary>
+        /// <typeparam name="T">Тип перечисления.</typeparam>
+        /// <returns></returns>
+        public static IEnumerable<T> GetValues<T>() where T : Enum 
+            => Enum.GetValues(typeof(T)).Cast<T>();
+
+        /// <summary>
+        /// Сгенерировать случайный идентификатор для сущности, который не входит в словарь локальной БД.
         /// </summary>
         /// <typeparam name="TModel">Модель сущности.</typeparam>
         /// <param name="entities">Набор существующих сущностей.</param>
         /// <param name="sporadic">ГПСЧ.</param>
+        /// <param name="minValue">Минимальное возможное значение.</param>
         /// <returns></returns>
-        public static long GetRandomExceptedId<TModel>(this Dictionary<long, TModel> entities, Random sporadic) where TModel : class
+        public static long GetRandomExceptedId<TModel>(this Dictionary<long, TModel> entities,
+            Random sporadic,
+            in long minValue = 1)
+            where TModel : class
         {
-            var newId = sporadic.GetId();
+            var newId = sporadic.GetId(minValue);
 
             while (entities.ContainsKey(newId))
-                newId = sporadic.GetId();
+                newId = sporadic.GetId(minValue);
 
             return newId;
         }
 
         /// <summary>
-        /// Сгенерировать случайный идентификатор для сущности, который не входит в коллекцию.
+        /// Сгенерировать случайный идентификатор для сущности,
+        /// который не входит в коллекцию <paramref name="entities"/> по заданному селектору <paramref name="propSelector"/>.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="entities">The entities.</param>
-        /// <param name="fieldSelector">The field selector.</param>
-        /// <param name="sporadic">The sporadic.</param>
+        /// <typeparam name="T">Тип элемента коллекции.</typeparam>
+        /// <param name="entities">Коллекция элементов.</param>
+        /// <param name="propSelector">Селектор поля модели <typeparamref name="T"/>,
+        /// по которому будет происходить сравнение сгенерированного идентификатора.</param>
+        /// <param name="sporadic">ГПСЧ.</param>
+        /// <param name="minValue">Минимальное возможное значение.</param>
         /// <returns></returns>
-        public static long GetRandomExceptedId<T>(this IEnumerable<T> entities, Func<T, long> fieldSelector, Random sporadic) where T : class
+        public static long GetRandomExceptedId<T>(this IEnumerable<T> entities,
+            Func<T, long> propSelector,
+            Random sporadic,
+            in long minValue = 1)
+            where T : class
         {
-            var newId = sporadic.GetId();
+            var ids = entities.Select(propSelector);
+            return GetRandomExceptedId(ids, sporadic, minValue);
+        }
 
-            var ids = entities.Select(fieldSelector);
+        /// <summary>
+        /// Сгенерировать случайный идентификатор, который не входит в коллекцию.
+        /// </summary>
+        /// <param name="items">Коллекция идентификаторов.</param>
+        /// <param name="sporadic">ГПСЧ.</param>
+        /// <param name="minValue">Минимальное возможное значение.</param>
+        /// <returns></returns>
+        public static long GetRandomExceptedId(this IEnumerable<long> items, Random sporadic, in long minValue = 1)
+        {
+            var newId = sporadic.GetId(minValue);
 
-            while (ids.Contains(newId))
-                newId = sporadic.GetId();
+            while (items.Contains(newId))
+                newId = sporadic.GetId(minValue);
 
             return newId;
+        }
+
+        /// <summary>
+        /// Сгенерировать случайное наименование,
+        /// которое не входит в коллекцию <paramref name="entities"/> по заданному селектору <paramref name="propSelector"/>.
+        /// </summary>
+        /// <typeparam name="T">Тип элемента коллекции.</typeparam>
+        /// <param name="entities">Коллекция элементов.</param>
+        /// <param name="propSelector">Селектор поля модели <typeparamref name="T"/>,
+        /// по которому будет происходить сравнение сгенерированного наименования.</param>
+        /// <param name="sporadic">ГПСЧ.</param>
+        /// <param name="comparer">Компаратор строк (по умолчанию = Ordinal).</param>
+        /// <param name="minLength">Мин. длина строки.</param>
+        /// <param name="maxLength">Макс. длина строки.</param>
+        /// <returns></returns>
+        public static string GetRandomExceptedName<T>(this IEnumerable<T> entities,
+            Func<T, string> propSelector,
+            Random sporadic,
+            StringComparer comparer = null,
+            in int minLength = 4,
+            in int maxLength = 16)
+            where T : class
+        {
+            var newName = sporadic.GetRandomName(minLength, maxLength);
+
+            var names = entities.Select(propSelector);
+
+            while (names.Contains(newName, comparer ?? StringComparer.Ordinal))
+                newName = sporadic.GetRandomName(minLength, maxLength);
+
+            return newName;
         }
 
         /// <summary>
@@ -54,7 +116,10 @@ namespace Xunit
         /// <param name="min">Минимальное кол-во элементов.</param>
         /// <param name="max">Максимальное кол-во элементов.</param>
         /// <returns></returns>
-        public static IEnumerable<T> GetRandomItems<T>(this IEnumerable<T> entities, Random sporadic, int min = 1, int? max = null) =>
+        public static IEnumerable<T> GetRandomItems<T>(this IEnumerable<T> entities,
+            Random sporadic,
+            int min = 1,
+            int? max = null) =>
             entities.Take(sporadic.Next(min, max ?? entities.Count()));
 
         /// <summary>
