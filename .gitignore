@@ -10,3 +10,13 @@
 **/*.xproj.user
 **/*.csproj.user
 **/aspnet_consul_config.json
+/.cr
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
