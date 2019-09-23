@@ -45,14 +45,14 @@ namespace Xunit
         /// </summary>
         /// <typeparam name="T">Тип элемента коллекции.</typeparam>
         /// <param name="entities">Коллекция элементов.</param>
+        /// <param name="sporadic">ГПСЧ.</param>
         /// <param name="propSelector">Селектор поля модели <typeparamref name="T"/>,
         /// по которому будет происходить сравнение сгенерированного идентификатора.</param>
-        /// <param name="sporadic">ГПСЧ.</param>
         /// <param name="minValue">Минимальное возможное значение.</param>
         /// <returns></returns>
         public static long GetRandomExceptedId<T>(this IEnumerable<T> entities,
-            Func<T, long> propSelector,
             Random sporadic,
+            Func<T, long> propSelector,
             in long minValue = 1)
             where T : class
         {
@@ -83,16 +83,47 @@ namespace Xunit
         /// </summary>
         /// <typeparam name="T">Тип элемента коллекции.</typeparam>
         /// <param name="entities">Коллекция элементов.</param>
+        /// <param name="sporadic">ГПСЧ.</param>
         /// <param name="propSelector">Селектор поля модели <typeparamref name="T"/>,
         /// по которому будет происходить сравнение сгенерированного наименования.</param>
+        /// <param name="comparer">Компаратор строк (по умолчанию = Ordinal).</param>
+        /// <param name="minLength">Мин. длина строки.</param>
+        /// <param name="maxLength">Макс. длина строки.</param>
+        /// <returns></returns>
+        public static string GetRandomExceptedName<T>(this Dictionary<long, T> entities,
+            Random sporadic,
+            Func<T, string> propSelector,
+            StringComparer comparer = null,
+            in int minLength = 4,
+            in int maxLength = 16)
+            where T : class
+        {
+            var newName = sporadic.GetRandomName(minLength, maxLength);
+
+            var names = entities.Values.Select(propSelector);
+
+            while (names.Contains(newName, comparer ?? StringComparer.Ordinal))
+                newName = sporadic.GetRandomName(minLength, maxLength);
+
+            return newName;
+        }
+
+        /// <summary>
+        /// Сгенерировать случайное наименование,
+        /// которое не входит в коллекцию <paramref name="entities"/> по заданному селектору <paramref name="propSelector"/>.
+        /// </summary>
+        /// <typeparam name="T">Тип элемента коллекции.</typeparam>
+        /// <param name="entities">Коллекция элементов.</param>
         /// <param name="sporadic">ГПСЧ.</param>
+        /// <param name="propSelector">Селектор поля модели <typeparamref name="T"/>,
+        /// по которому будет происходить сравнение сгенерированного наименования.</param>
         /// <param name="comparer">Компаратор строк (по умолчанию = Ordinal).</param>
         /// <param name="minLength">Мин. длина строки.</param>
         /// <param name="maxLength">Макс. длина строки.</param>
         /// <returns></returns>
         public static string GetRandomExceptedName<T>(this IEnumerable<T> entities,
-            Func<T, string> propSelector,
             Random sporadic,
+            Func<T, string> propSelector,
             StringComparer comparer = null,
             in int minLength = 4,
             in int maxLength = 16)
