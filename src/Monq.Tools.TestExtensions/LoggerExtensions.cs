@@ -1,7 +1,7 @@
 ﻿using Moq;
 using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Internal;
 
 namespace Xunit
 {
@@ -52,7 +52,7 @@ namespace Xunit
                     obj.Log(
                         level,
                         It.IsAny<EventId>(),
-                        It.Is<FormattedLogValues>(x => x.ToString().Contains(message)),
+                        It.Is<IReadOnlyList<KeyValuePair<string, object>>>(x => x.ToString().Contains(message)),
                         It.IsAny<TException>(),
                         It.IsAny<Func<object, Exception, string>>()),
                 Times.Once);

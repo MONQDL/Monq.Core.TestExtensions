@@ -18,10 +18,13 @@ namespace Monq.Tools.TestExtensions.Tests
         {
             var expectedCollection = Enumerable.Range(0, 10).Select(x => new ValueViewModel { Id = x, Name = $"TestName{x}" });
             var actualCollection = Enumerable.Range(0, 10).Select(x => new ValueViewModel { Id = x, Name = $"TestName{x}" });
-            Assert.Collection(expectedCollection, actualCollection, x => x.Id, x => x.Id, (expected, actual) => { Assert.NotNull(actual); Assert.Equal(expected.Name, actual.Name); });
-
-            actualCollection = Enumerable.Range(0, 9).Select(x => new ValueViewModel { Id = x, Name = $"TestName{x}" });
-            //Assert.Collection(expectedCollection, actualCollection, x => x.Id, x => x.Id, (expected, actual) => { Assert.NotNull(actual); Assert.Equal(expected.Name, actual.Name); });
+            Assert.Collection(expectedCollection, actualCollection,
+                x => x.Id, x => x.Id,
+                (expected, actual) =>
+                {
+                    Assert.NotNull(actual);
+                    Assert.Equal(expected.Name, actual.Name);
+                });
         }
     }
 }
