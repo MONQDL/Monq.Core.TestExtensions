@@ -33,9 +33,9 @@ namespace Xunit
         public static void VerifyLog<T>(this Mock<ILogger<T>> loggerMock, LogLevel level, string message, Times times, string failMessage = null) =>
             loggerMock.Verify(l => l.Log(level,
                     It.IsAny<EventId>(),
-                    It.Is<object>(o => o.ToString() == message),
+                    It.Is<It.IsAnyType>((v, _) => v.ToString() == message),
                     null,
-                    It.IsAny<Func<object, Exception, string>>()),
+                    (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()),
                 times,
                 failMessage);
 
@@ -52,9 +52,9 @@ namespace Xunit
                     obj.Log(
                         level,
                         It.IsAny<EventId>(),
-                        It.Is<IReadOnlyList<KeyValuePair<string, object>>>(x => x.ToString().Contains(message)),
+                        It.Is<It.IsAnyType>((v, _) => v.ToString() == message),
                         It.IsAny<TException>(),
-                        It.IsAny<Func<object, Exception, string>>()),
+                        (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()),
                 Times.Once);
     }
 }
