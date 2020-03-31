@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Monq.Core.Authorization" Version="4.1.1" />
-    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="3.1.1" />
+    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="3.2.0" />
     <PackageReference Include="Monq.Core.Paging.Models" Version="4.0.0" />
     <PackageReference Include="Monq.Tools.MvcExtensions" Version="2.1.0" />
     <PackageReference Include="Moq" Version="4.13.1" />
