@@ -69,6 +69,21 @@ namespace Xunit
         }
 
         /// <summary>
+        /// Зарегистрировать рабочие группы из <paramref name="workGroupIds"/>, у которых есть право <paramref name="grantName"/>.
+        /// </summary>
+        /// <param name="fakeGrants">Реализация тестового представления методов расширения пользовательских прав для идентификаторов на основе утверждений.</param>
+        /// <param name="workGroupIds">Идентификаторы рабочих групп, у которых есть право <paramref name="grantName"/>.</param>
+        /// <param name="grantName">Наименование права, по которому будет осуществляться проверка списка рабочих групп <paramref name="workGroupIds"/> на его наличие.</param>
+        /// <returns></returns>
+        public static FakeGrantsImpl FakeGetWorkGroupsWithGrant(this FakeGrantsImpl fakeGrants,
+            IEnumerable<long> workGroupIds, 
+            string grantName)
+        {
+            fakeGrants.GetWorkGroupsWithGrantFunc = (_, __, grant) => grant == grantName ? workGroupIds : Enumerable.Empty<long>();
+            return fakeGrants;
+        }
+
+        /// <summary>
         /// Задать флаг наличия статуса "Системного пользователя" для пользователя (<see cref="ClaimsPrincipal"/>).
         /// </summary>
         /// <param name="fakeGrants">Реализация тестового представления методов расширения пользовательских прав для идентификаторов на основе утверждений.</param>
