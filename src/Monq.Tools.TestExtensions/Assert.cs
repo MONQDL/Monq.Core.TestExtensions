@@ -11,6 +11,23 @@ namespace Xunit
     public partial class Assert
     {
         /// <summary>
+        /// Проверить даты с точностью по умолчанию (2 секунды).
+        /// </summary>
+        /// <param name="expected">Ожидаемое значение.</param>
+        /// <param name="actual">Актуальное значение.</param>
+        public static void AssertDate(DateTimeOffset expected, DateTimeOffset actual) =>
+            AssertDate(expected.Date, actual.Date.Date, TimeSpan.FromSeconds(2));
+        
+        /// <summary>
+        /// Проверить даты с заданной точностью.
+        /// </summary>
+        /// <param name="expected">Ожидаемое значение.</param>
+        /// <param name="actual">Актуальное значение.</param>
+        /// <param name="pecision">Точность сравнения.</param>
+        public static void AssertDate(DateTimeOffset expected, DateTimeOffset actual, TimeSpan pecision) => 
+            Equal(expected.Date, actual.Date.Date, pecision);
+
+        /// <summary>
         /// Проверить вхождение <paramref name="actual"/> даты в диапазон, между <paramref name="start"/> и <paramref name="end"/>.
         /// </summary>
         /// <param name="start">Начальная граница диапазона.</param>
