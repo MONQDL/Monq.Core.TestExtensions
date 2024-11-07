@@ -7,6 +7,7 @@
     <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <Authors>aligin, dmtry, dealwithbotalfred, darkscorp8, NorthRebel</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Company>MONQ Digital lab</Company>
     <Title>Monq.Core.TestExtensions</Title>
     <PackageId>Monq.Core.TestExtensions</PackageId>
