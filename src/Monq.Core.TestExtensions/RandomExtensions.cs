@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Методы расширения для <see cref="Random"/>.

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Методы расширения для работы с <see cref="Mock{ILogger}"/>.

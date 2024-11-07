@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Методы расширения для контроллера ASP.NET Core MVC <see cref="Controller"/>.
@@ -13,11 +13,12 @@ namespace Xunit
         /// Задать идентификатор пользовательского пространства в http контекст контроллера.
         /// </summary>
         /// <param name="controller">Web.Api контроллер.</param>
-        /// <param name="userspaceId">Идентификатор пользовательского пространства</param>
-        public static void SetUserspace(this Controller controller, long userspaceId)
+        /// <param name="userspaceId">Идентификатор пользовательского пространства.</param>
+        /// <param name="fieldName">Название поля, содерждащего значение userspaceId в контроллере.</param>
+        public static void SetUserspace(this Controller controller, long userspaceId, string fieldName = "UserspaceId")
         {
             var userspaceField = controller.GetType()
-                .GetField("UserspaceId",
+                .GetField(fieldName,
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
             userspaceField.SetValue(controller, userspaceId);

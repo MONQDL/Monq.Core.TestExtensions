@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 
-namespace Xunit.Stubs
+namespace Monq.Core.TestExtensions.Stubs
 {
 #pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
 #pragma warning disable RCS1163 // Unused parameter.

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit.Sdk;
 
-namespace Monq.Tools.TestExtensions.Exceptions
+namespace Monq.Core.TestExtensions.Exceptions
 {
     /// <summary></summary>
     /// <seealso cref="Xunit.Sdk.XunitException" />

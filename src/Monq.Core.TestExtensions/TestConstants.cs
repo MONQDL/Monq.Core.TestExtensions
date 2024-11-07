@@ -1,6 +1,6 @@
 ﻿using Monq.Core.Paging.Models;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Класс содержит набор констант для проекта с unit-тестами.

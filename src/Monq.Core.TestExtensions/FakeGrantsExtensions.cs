@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Collections.Generic;
 using Monq.Core.Authorization.Tests;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Методы расширения для предоставления фейковых прав пользователя при помощи <see cref="FakeGrantsImpl"/>.

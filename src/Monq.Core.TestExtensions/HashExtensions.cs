@@ -3,7 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Хеш-функции для внутренних типов.

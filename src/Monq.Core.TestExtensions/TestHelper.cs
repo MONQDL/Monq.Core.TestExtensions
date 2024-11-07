@@ -1,15 +1,15 @@
 ﻿using System;
-using Xunit.Stubs;
+using System.Net.Http;
 using IdentityModel;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Monq.Core.HttpClientExtensions;
+using Monq.Core.TestExtensions.Stubs;
 using Monq.Core.BasicDotNetMicroservice;
-using Monq.Core.HttpClientExtensions.Services;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Хелпер для создания окружения unit-тестов.
@@ -52,19 +52,19 @@ namespace Xunit
             IOptions<AppConfiguration> appConfiguration,
             FakeResponseHandler fakeResponseHandler,
             HttpContextAccessor context = null)
-            where TImpl : BasicSingleHttpService<AppConfiguration>, TInt
+            where TImpl : RestHttpClientFromOptions<AppConfiguration>, TInt
         {
-            context = context ?? new HttpContextAccessor
+            context ??= new HttpContextAccessor
             {
                 HttpContext = new DefaultHttpContext()
             };
-
+            
             return (TImpl)Activator.CreateInstance(typeof(TImpl),
                 appConfiguration,
+                new HttpClient(fakeResponseHandler),
                 new LoggerFactory(),
-                new BasicHttpServiceOptions(),
-                context,
-                fakeResponseHandler);
+                new RestHttpClientOptions(),
+                context);
         }
     }
 }

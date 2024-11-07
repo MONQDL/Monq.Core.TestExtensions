@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <IsPackable>true</IsPackable>
+    <Authors>aligin, dmtry, dealwithbotalfred, darkscorp8, NorthRebel</Authors>
+    <PackageId>Monq.Core.TestExtensions</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>mvc asp.net-core</PackageTags>
+    <PackageProjectUrl>https://github.com/MONQDL/Monq.Core.TestExtensions</PackageProjectUrl>
+    <Description>Библиотека содержит набор расширений, который применяется в тестовых проектах MONQ.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Monq.Core.Authorization" Version="5.0.0-rev-11703995228" />
+    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="7.0.0-rev-11701564075" />
+    <PackageReference Include="Monq.Core.MvcExtensions" Version="4.0.0-rev-11718410405" />
+    <PackageReference Include="Monq.Core.Paging.Models" Version="5.0.0-rev-11704314609" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit.assert.source" Version="2.9.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.core" Version="2.9.2" />
+  </ItemGroup>
+
+</Project>

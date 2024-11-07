@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace Xunit.Stubs
+namespace Monq.Core.TestExtensions.Stubs
 {
     /// <summary>
     /// Фейковый обработчик HTTP запросов.

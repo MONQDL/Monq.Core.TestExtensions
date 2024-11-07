@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using Xunit.Sdk;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions.Exceptions
 {
     /// <summary>
     /// Exception thrown when Assert.Collection fails.

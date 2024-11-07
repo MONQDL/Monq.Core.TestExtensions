@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Monq.Tools.MvcExtensions.ViewModels;
+using Monq.Core.MvcExtensions.ViewModels;
 
-namespace Xunit
+namespace Monq.Core.TestExtensions
 {
     /// <summary>
     /// Методы расширения для тестирования результата действия контроллера <see cref="ActionResult{TValue}"/>.
