@@ -18,8 +18,8 @@ jobs:
     # Set the type of machine to run on
     runs-on: ubuntu-latest
     env:
-      MAINAPP_ASP_PROJECT_PATH: "src/Monq.Core.Authorization"
-      TEST_MAINAPP_ASP_PROJECT_PATH: "src/Monq.Core.Authorization.Tests"
+      MAINAPP_ASP_PROJECT_PATH: "src/Monq.Core.TestExtensions"
+      TEST_MAINAPP_ASP_PROJECT_PATH: "src/Monq.Core.TestExtensions.Tests"
 
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine

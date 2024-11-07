@@ -1,5 +1,4 @@
-﻿using Monq.Core.TestExtensions;
-using Monq.Core.TestExtensions.Tests.TestModels;
+﻿using Monq.Core.TestExtensions.Tests.TestModels;
 using System.Linq;
 using Xunit;
 

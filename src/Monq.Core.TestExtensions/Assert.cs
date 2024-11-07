@@ -1,12 +1,11 @@
-﻿using Monq.Core.MvcExtensions.Extensions;
+using Monq.Core.MvcExtensions.Extensions;
 using Monq.Core.MvcExtensions.Filters;
-using Monq.Core.TestExtensions.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Monq.Core.TestExtensions;
+namespace Xunit;
 
 public partial class Assert
 {

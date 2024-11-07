@@ -2,7 +2,6 @@
 using Moq;
 using System;
 using Xunit;
-using Monq.Core.TestExtensions;
 
 namespace Monq.Core.TestExtensions.Tests;
 
