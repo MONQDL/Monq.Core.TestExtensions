@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Monq.Core.MvcExtensions.ViewModels;
-using System.Collections.Generic;
-using Xunit;
 
 namespace Xunit;
 

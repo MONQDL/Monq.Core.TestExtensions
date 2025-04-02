@@ -18,19 +18,21 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Monq.Core.Authorization" Version="5.0.0-rev-11703995228" />
-    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="7.0.0-rev-11701564075" />
-    <PackageReference Include="Monq.Core.MvcExtensions" Version="4.0.0-rev-11718410405" />
-    <PackageReference Include="Monq.Core.Paging.Models" Version="5.0.0-rev-11704314609" />
+    <PackageReference Include="Monq.Core.Authorization" Version="5.0.0" />
+    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="7.0.0-rev-14062880298" />
+    <PackageReference Include="Monq.Core.MvcExtensions" Version="4.0.0" />
+    <PackageReference Include="Monq.Core.Paging.Models" Version="5.0.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="xunit.assert.source" Version="2.9.2">
+    <PackageReference Include="xunit.assert.source" Version="2.9.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="xunit.core" Version="2.9.2" />
+    <PackageReference Include="xunit.core" Version="2.9.3" />
   </ItemGroup>
 
 </Project>
