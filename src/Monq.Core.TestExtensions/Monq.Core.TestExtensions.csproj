@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>3.0.0</Version>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>
+    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <IsPackable>true</IsPackable>
+    <Authors>aligin, dmtry, dealwithbotalfred, darkscorp8, NorthRebel</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Company>MONQ Digital lab</Company>
+    <Title>Monq.Core.TestExtensions</Title>
+    <PackageId>Monq.Core.TestExtensions</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>monq test</PackageTags>
+    <PackageProjectUrl>https://github.com/MONQDL/Monq.Core.TestExtensions</PackageProjectUrl>
+    <Description>Библиотека содержит набор расширений, который применяется в тестовых проектах MONQ.</Description>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Monq.Core.Authorization" Version="5.0.0" />
+    <PackageReference Include="Monq.Core.BasicDotNetMicroservice" Version="7.0.0-rev-14062880298" />
+    <PackageReference Include="Monq.Core.MvcExtensions" Version="4.0.0" />
+    <PackageReference Include="Monq.Core.Paging.Models" Version="5.0.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit.assert.source" Version="2.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.core" Version="2.9.3" />
+  </ItemGroup>
+
+</Project>

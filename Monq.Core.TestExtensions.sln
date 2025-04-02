@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35424.110 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Tools.TestExtensions", "src\Monq.Tools.TestExtensions\Monq.Tools.TestExtensions.csproj", "{ACAAAAEF-5E5A-4975-BFE3-D994315A5639}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Core.TestExtensions", "src\Monq.Core.TestExtensions\Monq.Core.TestExtensions.csproj", "{ACAAAAEF-5E5A-4975-BFE3-D994315A5639}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8B7E7E19-6A7F-4C1D-8A8D-CBA853189798}"
 EndProject
@@ -11,11 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
+		.github\workflows\netcorelibrary.yml = .github\workflows\netcorelibrary.yml
 		NuGet.config = NuGet.config
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Tools.TestExtensions.Tests", "src\Monq.Tools.TestExtensions.Tests\Monq.Tools.TestExtensions.Tests.csproj", "{64766F0D-7DF8-48BC-A145-CDB365375226}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Core.TestExtensions.Tests", "src\Monq.Core.TestExtensions.Tests\Monq.Core.TestExtensions.Tests.csproj", "{64766F0D-7DF8-48BC-A145-CDB365375226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
