@@ -49,15 +49,13 @@ public static class TestHelper
         IOptions<AppConfiguration> appConfiguration,
         FakeResponseHandler fakeResponseHandler,
         HttpContextAccessor context = null)
-        where TImpl : RestHttpClientFromOptions<AppConfiguration>, TInt
+        where TImpl : RestHttpClient, TInt
     {
         context ??= new HttpContextAccessor
         {
             HttpContext = new DefaultHttpContext()
         };
-
         return (TImpl)Activator.CreateInstance(typeof(TImpl),
-            appConfiguration,
             new HttpClient(fakeResponseHandler),
             new LoggerFactory(),
             new RestHttpClientOptions(),
