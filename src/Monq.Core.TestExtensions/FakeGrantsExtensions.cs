@@ -94,31 +94,6 @@ public static class FakeGrantsExtensions
     }
 
     /// <summary>
-    /// Задать флаг наличия статуса администратора пользовательского пространства для пользователя (<see cref="ClaimsPrincipal"/>).
-    /// </summary>
-    /// <param name="fakeGrants">Реализация тестового представления методов расширения пользовательских прав для идентификаторов на основе утверждений.</param>
-    /// <param name="value">Флаг наличия статуса администратора пользовательского пространства.</param>
-    /// <returns></returns>
-    public static FakeGrantsImpl FakeIsUserspaceAdmin(this FakeGrantsImpl fakeGrants, bool value = true)
-    {
-        fakeGrants.IsUserspaceAdminFunc = (_, __) => value;
-        return fakeGrants;
-    }
-
-    /// <summary>
-    /// Задать флаг "Суперпользователя" для пользователя (<see cref="ClaimsPrincipal"/>) для прохождения проверки -
-    /// является ли пользователь системным или администратором пользовательского пространства.
-    /// </summary>
-    /// <param name="fakeGrants">Реализация тестового представления методов расширения пользовательских прав для идентификаторов на основе утверждений.</param>
-    /// <param name="value">Флаг наличия статуса "Суперпользователя".</param>
-    /// <returns></returns>
-    public static FakeGrantsImpl FakeIsSuperUser(this FakeGrantsImpl fakeGrants, bool value = true)
-    {
-        fakeGrants.IsSuperUserFunc = (_, __) => value;
-        return fakeGrants;
-    }
-
-    /// <summary>
     /// Зарегистрировать рабочие группы из <paramref name="workGroupIds"/> с заданными правами <paramref name="grants"/> в пользовательском пространстве <paramref name="userspaceId"/>
     /// в локальном словаре сопоставлений прав на рабочие группы <paramref name="workGroupsStorage"/>.
     /// </summary>

@@ -1,4 +1,4 @@
-﻿using Monq.Core.MvcExtensions.Filters;
+﻿using Monq.Core.MvcExtensions.Attributes;
 using System.Collections.Generic;
 
 namespace Monq.Core.TestExtensions.Tests.TestModels;

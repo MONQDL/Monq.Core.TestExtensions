@@ -10,7 +10,6 @@ public class AssertExtensionsTests
     public void ShouldProperlyValidFilter()
     {
         Assert.FilterIsValid<TestFilterViewModel, ValueViewModel>();
-        //Assert.FilterIsValid<BadFilterModel, ValueViewModel>();
     }
 
     [Fact(DisplayName = "Проверка коллекции.")]
