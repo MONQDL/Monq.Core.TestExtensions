@@ -49,5 +49,5 @@ public static class MvcExtensions
     /// <param name="headers">Заголовки HTTP запроса/ответа.</param>
     /// <param name="userspaceId">Идентификатор пользовательского пространства.</param>
     public static void AddUserspaceId(this IHeaderDictionary headers, long userspaceId) =>
-        headers.Add("x-smon-userspace-id", new StringValues(userspaceId.ToString()));
+        headers.TryAdd("x-smon-userspace-id", new StringValues(userspaceId.ToString()));
 }
